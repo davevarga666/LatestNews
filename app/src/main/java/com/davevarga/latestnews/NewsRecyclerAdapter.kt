@@ -8,47 +8,33 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.layout_news_list_item.view.*
 
-class NewsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
-{
+class NewsRecyclerAdapter(val items: List<NewsPost>) :
+    RecyclerView.Adapter<NewsRecyclerAdapter.NewsViewHolder>() {
 
-    private val TAG: String = "AppDebug"
-
-    private var items: List<NewsPost> = ArrayList()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.layout_news_list_item, parent, false)
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.layout_news_list_item, parent, false)
         )
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when(holder) {
+    override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
+        return holder.bind(items.get(position))
 
-            is NewsViewHolder -> {
-                holder.bind(items.get(position))
-            }
-
-        }
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    fun submitList(blogList: List<NewsPost>){
-        items = blogList
-    }
-
-    class NewsViewHolder
-    constructor(
-        itemView: View
-    ): RecyclerView.ViewHolder(itemView){
+    class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val news_image = itemView.news_image
         val news_title = itemView.news_title
-        val news_author = itemView.news_author
+        val news_source = itemView.news_source
+        val news_date = itemView.news_date
 
-        fun bind(NewsPost: NewsPost){
+        fun bind(newsPiece: NewsPost) {
 
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)
@@ -56,10 +42,11 @@ class NewsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 
             Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
-                .load(NewsPost.image)
+                .load(newsPiece.urlToImage)
                 .into(news_image)
-            news_title.setText(NewsPost.title)
-            news_author.setText(NewsPost.source)
+            news_title.setText(newsPiece.title)
+            news_source.setText(newsPiece.source.name)
+            news_date.setText(newsPiece.publishedAt)
 
         }
 
