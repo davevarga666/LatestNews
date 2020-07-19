@@ -27,6 +27,7 @@ class NewsRecyclerAdapter(val items: List<NewsPost>) :
         return items.size
     }
 
+
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val news_image = itemView.news_image
@@ -43,6 +44,7 @@ class NewsRecyclerAdapter(val items: List<NewsPost>) :
             Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
                 .load(newsPiece.urlToImage)
+//                .errorPlaceholder
                 .into(news_image)
             news_title.setText(newsPiece.title)
             news_source.setText(newsPiece.source.name)

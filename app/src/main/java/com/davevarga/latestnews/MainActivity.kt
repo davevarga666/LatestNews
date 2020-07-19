@@ -2,7 +2,6 @@ package com.davevarga.latestnews
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -16,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val request = ServiceBuilder.buildService(GetData::class.java)
+        val request = ServiceBuilder.getNetworkClient(GetData::class.java)
         val call = request.getData()
 
         call.enqueue(object : Callback<RecentPosts>{
@@ -25,7 +24,9 @@ class MainActivity : AppCompatActivity() {
                     recycler_view.apply {
                         setHasFixedSize(true)
                         layoutManager = LinearLayoutManager(this@MainActivity)
-                        adapter = NewsRecyclerAdapter(response.body()!!.results)
+
+                        // Pasing of response is not proper
+                        adapter = NewsRecyclerAdapter(response.body()!!.articles)
                     }
                 }
             }
