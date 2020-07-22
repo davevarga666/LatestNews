@@ -49,7 +49,7 @@ class NewsRecyclerAdapter(val items: List<NewsPost>) :
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
 
-            GlideApp.with(itemView.context)
+            Glide.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
                 .load("https://raw.githubusercontent.com/bumptech/glide/master/static/glide_logo.png")
                 .placeholder(circularProgressDrawable)
