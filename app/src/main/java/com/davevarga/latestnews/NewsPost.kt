@@ -1,6 +1,5 @@
 package com.davevarga.latestnews
 
-import java.sql.ClientInfoStatus
 
 data class NewsPost(
     val author: String,
