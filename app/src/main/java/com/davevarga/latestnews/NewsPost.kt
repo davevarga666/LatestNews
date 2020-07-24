@@ -18,6 +18,6 @@ data class Source(
 )
 
 data class RecentPosts(
-    val status :   String,
+    val status: String,
     val articles: List<NewsPost>
 )
