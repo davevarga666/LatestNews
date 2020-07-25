@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.davevarga.latestnews.databinding.LayoutNewsListItemBinding
 import kotlinx.android.synthetic.main.layout_news_list_item.*
@@ -60,11 +61,11 @@ class NewsRecyclerAdapter(val items: List<NewsPost>) :
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
 
-            Glide.with(itemView.context)
+            GlideApp.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
                 .load("https://raw.githubusercontent.com/bumptech/glide/master/static/glide_logo.png")
                 .placeholder(circularProgressDrawable)
-                .load(newsPiece.urlToImage)
+                .load(newsPiece.postImage)
 //                .errorPlaceholder
                 .into(binding.newsImage)
 

@@ -1,90 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="newsItem"
-            type="com.davevarga.latestnews.NewsPost"/>
+
+        <variable
+            name="newsItem"
+            type="com.davevarga.latestnews.NewsPost" />
     </data>
 
-            <RelativeLayout
-                android:id="@+id/relativelayout"
+    <RelativeLayout
+        android:id="@+id/relativelayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/myrect"
+        android:elevation="20dp"
+        tools:background="@android:color/white">
+
+
+        <ImageView
+            android:id="@+id/news_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@drawable/gradient"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@android:color/white" />
+
+
+        <LinearLayout
+            android:id="@+id/container1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/news_image"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/news_image">
+
+            <TextView
+                android:id="@+id/news_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:elevation="20dp"
-                android:background="@drawable/myrect">
-
-
-            <ImageView
-                android:id="@+id/news_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:padding="0dp"
-                android:scaleType="fitXY"
-                android:background="@drawable/gradient"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+                android:fontFamily="sans-serif"
+                android:padding="12dp"
+                android:text="@{newsItem.postTitle}"
+                android:textColor="#f2f2f2"
+                android:textSize="20sp"
+                tools:text="New Title" />
 
             <LinearLayout
-                android:id="@+id/container1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_alignBottom="@id/news_image"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/news_image">
+                android:orientation="horizontal">
+
 
                 <TextView
-                    android:id="@+id/news_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@{newsItem.title}"
-                    android:fontFamily="sans-serif"
-                    android:padding="12dp"
-                    android:textColor="#f2f2f2"
-                    android:textSize="20sp" />
-
-                <LinearLayout
+                    android:id="@+id/news_source"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:layout_weight="1"
+                    android:fontFamily="s"
+                    android:padding="12dp"
+                    android:text="@{newsItem.postSource.sourceName}"
+                    android:textColor="#bababa"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
-
-                    <TextView
-                        android:id="@+id/news_source"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="12dp"
-                        android:fontFamily="s"
-                        android:text="@{newsItem.source.name}"
-                        android:textColor="#bababa"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/news_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0"
-                        android:padding="12dp"
-                        android:text="@{newsItem.publishedAt}"
-                        android:textColor="#bababa"
-                        android:textSize="12sp" />
-                </LinearLayout>
-
-
+                <TextView
+                    android:id="@+id/news_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:padding="12dp"
+                    android:text="@{newsItem.postDate}"
+                    android:textColor="#bababa"
+                    android:textSize="12sp" />
             </LinearLayout>
 
-            </RelativeLayout>
 
+        </LinearLayout>
 
-
+    </RelativeLayout>
 </layout>

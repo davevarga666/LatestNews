@@ -24,10 +24,9 @@ class MainActivity : AppCompatActivity() {
                 recycler_view.apply {
                     setHasFixedSize(true)
 
-                    layoutManager = LinearLayoutManager(this@MainActivity)
 
                     // Parsing of response is not proper
-                    adapter = NewsRecyclerAdapter(response.body()!!.articles)
+                    adapter = NewsRecyclerAdapter(response.body()!!.postList)
                 }
             }
 
