@@ -10,8 +10,9 @@
             type="com.davevarga.latestnews.NewsPost" />
     </data>
 
-    <RelativeLayout
-        android:id="@+id/relativelayout"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -89,5 +90,5 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
