@@ -8,6 +8,10 @@
         <variable
             name="newsItem"
             type="com.davevarga.latestnews.NewsPost" />
+        <variable
+
+            name="converter"
+            type="com.davevarga.latestnews.Converter.Companion" />
     </data>
 
 
@@ -15,15 +19,15 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_marginHorizontal="16dp"
         tools:background="@android:color/white">
 
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="230dp"
             app:cardElevation="20dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginVertical="12dp"
             android:background="@drawable/myrect"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
+                android:scaleType="centerCrop"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -88,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
                         android:padding="12dp"
-                        android:text="@{newsItem.postDate}"
+                        android:text="@{newsItem.postDate.subSequence(0,10).toString()}"
                         android:textColor="#bababa"
                         android:textSize="12sp" />
                 </LinearLayout>

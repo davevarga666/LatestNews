@@ -43,12 +43,19 @@ class NewsRecyclerAdapter(val items: List<NewsPost>) :
         return items.size
     }
 
+    //to remove duplicates
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 
     class NewsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
 
         fun bind(newsPiece: NewsPost, binding: LayoutNewsListItemBinding) {
-
             binding.newsItem = newsPiece
 
             val circularProgressDrawable = CircularProgressDrawable(itemView.context)
@@ -63,9 +70,10 @@ class NewsRecyclerAdapter(val items: List<NewsPost>) :
 
             GlideApp.with(itemView.context)
                 .applyDefaultRequestOptions(requestOptions)
-                .load("https://raw.githubusercontent.com/bumptech/glide/master/static/glide_logo.png")
-                .placeholder(circularProgressDrawable)
                 .load(newsPiece.postImage)
+                .error(R.drawable.error_image)
+                .placeholder(circularProgressDrawable)
+//                .error(R.drawable.imagenotfound)
 //                .errorPlaceholder
                 .into(binding.newsImage)
 
