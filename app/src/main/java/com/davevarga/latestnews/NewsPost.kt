@@ -7,7 +7,7 @@ data class NewsPost(
     @SerializedName("author")
     val postAuthor: String,
     @SerializedName("title")
-    val postTitle: String,
+    val _postTitle: String,
     @SerializedName("description")
     val postDescription: String,
     @SerializedName("url")
@@ -20,7 +20,14 @@ data class NewsPost(
     val postDate: String,
     @SerializedName("content")
     val postContent: String
-)
+) {
+    val postTitle: String
+        get() {
+            val delimiter = " - ${postSource.sourceName}"
+            return _postTitle.split(delimiter).joinToString().replace(",", "")
+
+        }
+}
 
 data class Source(
     @SerializedName("id")
@@ -35,3 +42,4 @@ data class RecentPosts(
     @SerializedName("articles")
     val postList: List<NewsPost>
 )
+

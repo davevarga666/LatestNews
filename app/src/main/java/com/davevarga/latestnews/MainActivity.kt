@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
                 recycler_view.apply {
                     setHasFixedSize(true)
 
-
-                    // Parsing of response is not proper
                     adapter = NewsRecyclerAdapter(response.body()!!.postList)
                 }
             }
