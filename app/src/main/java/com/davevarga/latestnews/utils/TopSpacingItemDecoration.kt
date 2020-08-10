@@ -1,4 +1,4 @@
-package com.davevarga.latestnews
+package com.davevarga.latestnews.utils
 
 import android.graphics.Rect
 import android.view.View

@@ -7,12 +7,8 @@
 
         <variable
             name="newsItem"
-            type="com.davevarga.latestnews.NewsPost" />
+            type="com.davevarga.latestnews.models.NewsPost" />
 
-        <variable
-
-            name="converter"
-            type="com.davevarga.latestnews.Converter.Companion" />
     </data>
 
 

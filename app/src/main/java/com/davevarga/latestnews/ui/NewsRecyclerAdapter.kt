@@ -1,4 +1,4 @@
-package com.davevarga.latestnews
+package com.davevarga.latestnews.ui
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,12 +6,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.davevarga.latestnews.R
 import com.davevarga.latestnews.databinding.LayoutNewsListItemBinding
-import kotlinx.android.synthetic.main.layout_news_list_item.*
-import kotlinx.android.synthetic.main.layout_news_list_item.view.*
+import com.davevarga.latestnews.models.NewsPost
+import com.davevarga.latestnews.utils.GlideApp
 
 class NewsRecyclerAdapter(val items: List<NewsPost>) :
     RecyclerView.Adapter<NewsRecyclerAdapter.NewsViewHolder>() {
@@ -29,7 +28,9 @@ class NewsRecyclerAdapter(val items: List<NewsPost>) :
             false
         )
 
-        return NewsViewHolder(binding.root)
+        return NewsViewHolder(
+            binding.root
+        )
 
     }
 
@@ -37,6 +38,10 @@ class NewsRecyclerAdapter(val items: List<NewsPost>) :
 
         return holder.bind(items.get(position), binding)
 
+    }
+
+    fun getItem(position: Int): NewsPost {
+        return items.get(position)
     }
 
     override fun getItemCount(): Int {

@@ -1,5 +1,6 @@
-package com.davevarga.latestnews
+package com.davevarga.latestnews.dataSource.network
 
+import com.davevarga.latestnews.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
