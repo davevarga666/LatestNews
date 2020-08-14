@@ -1,6 +1,7 @@
 package com.davevarga.latestnews.dataSource.network
 
 import com.davevarga.latestnews.models.RecentPosts
+import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.Response
 

@@ -12,7 +12,7 @@ import com.davevarga.latestnews.databinding.LayoutNewsListItemBinding
 import com.davevarga.latestnews.models.NewsPost
 import com.davevarga.latestnews.utils.GlideApp
 
-class NewsRecyclerAdapter(val items: List<NewsPost>) :
+class NewsRecyclerAdapter(var items: List<NewsPost>) :
     RecyclerView.Adapter<NewsRecyclerAdapter.NewsViewHolder>() {
 
     lateinit var binding: LayoutNewsListItemBinding
@@ -27,6 +27,7 @@ class NewsRecyclerAdapter(val items: List<NewsPost>) :
             parent,
             false
         )
+
 
         return NewsViewHolder(
             binding.root
